@@ -25,6 +25,7 @@ from optparse import OptionParser
 import Crawler
 import sys
 import subprocess
+import gzip
 
 ## Global variables.
 dir = os.path.split(os.path.realpath(__file__))[0] # script directory
