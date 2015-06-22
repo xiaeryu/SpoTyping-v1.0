@@ -79,7 +79,10 @@ while os.path.isfile("%s.SpoTyping.tmp.%d" % (output,tmpfile)):
 ############################################################
 class Main:
     def concatenation(self,in_file,out_handle):  # Concatenate sequences without length check
-        in_handle = open(in_file)
+        if in_file.endswith(".gz"):
+            in_handle = gzip.open(in_file, 'rb')
+        else:
+            in_handle = open(in_file)
         count = 0
         for line in in_handle:
             line = line.strip('\n')
@@ -89,7 +92,10 @@ class Main:
         in_handle.close()
 
     def concatenation_check(self,in_file,out_handle,cutoff):  # Concatenate sequences with length check
-        in_handle = open(in_file)
+        if in_file.endswith(".gz"):
+            in_handle = gzip.open(in_file, 'rb')
+        else:
+            in_handle = open(in_file)
         count = 0
         outlength = 0
         for line in in_handle:
